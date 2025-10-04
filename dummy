@@ -1,0 +1,46 @@
+---
+title: "MINI-PROJECT #01 - Gourmet Cheeseburgers Across The Globe"
+format: html
+theme: flatly
+editor: visual
+author: "Richa Shiny Tigiripally"
+date: "2025-10-03"
+---
+
+# EXECUTIVE SUMMARY
+This project dives headfirst into Netflix’s Top 10 datasets, because if the world’s binge habits are telling a story, we’re here to translate it. Stepping into the shoes of a Netflix PR analyst, the mission was simple: uncover the hits, the hidden gems, and the global obsessions that keep viewers glued to their screens.
+
+Armed with R and a healthy dose of curiosity, we scrubbed, polished, and explored both global and country-level data to separate signal from streaming noise. Missing values got a reality check, timestamps were tamed, and interactive tables turned raw numbers into binge-worthy insights. From the non-English underdogs dominating global charts to the TV shows with marathon top-spot runs and record-breaking debuts, we pulled the kind of stats that could headline Netflix’s next big press release.
+
+# TASK 1: DATA ACQUISITION
+# ACQUIRE DATA
+```{r}
+if(!dir.exists(file.path("data", "mp01"))){
+    dir.create(file.path("data", "mp01"), showWarnings=FALSE, recursive=TRUE)
+}
+
+GLOBAL_TOP_10_FILENAME <- file.path("data", "mp01", "global_top10_alltime.csv")
+
+if(!file.exists(GLOBAL_TOP_10_FILENAME)){
+    download.file("https://www.netflix.com/tudum/top10/data/all-weeks-global.tsv", 
+                  destfile=GLOBAL_TOP_10_FILENAME)
+}
+
+COUNTRY_TOP_10_FILENAME <- file.path("data", "mp01", "country_top10_alltime.csv")
+
+if(!file.exists(COUNTRY_TOP_10_FILENAME)){
+    download.file("https://www.netflix.com/tudum/top10/data/all-weeks-countries.tsv", 
+                  destfile=COUNTRY_TOP_10_FILENAME)
+}
+```
+
+# DATA IMPORT AND PRESENTATION
+```{r}
+if(!require("tidyverse")) install.packages("tidyverse")
+library(readr)
+library(dplyr)
+
+GLOBAL_TOP_10 <- read_tsv(GLOBAL_TOP_10_FILENAME)
+
+glimpse(GLOBAL_TOP_10)
+```
