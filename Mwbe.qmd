@@ -1,0 +1,49 @@
+---
+title: "THE SUBCONTRACTING GATEWAY: How NYC's Contracting System Creates Oppurtunities For MWBE Firms"
+format: html
+execute:
+  message: false
+  warning: false
+theme: flatly
+author: "Richa S. Tigiripally"
+date: "2025-11-27"
+---
+
+![](images/MWBE.jpg){width="484"}
+
+
+### EXECUTIVE SUMMARY
+
+Total Contract Value Analyzed: $1.8 Billion
+This comprehensive analysis examines NYC's OMWBE contracting ecosystem, revealing both significant achievements and critical disparities that demand immediate action.
+
+### Critical Findings
+
+* Severe Demographic Disparity: Asian American contractors receive $907.3M (50.3%) while Native American contractors receive only $0.1M (0.006%) - a 900,000% gap
+
+* Budget Execution Crisis: 57.4% of contracts awarded in Q4, creating rushed procurement and disadvantaging smaller contractors
+
+* Subcontracting Trap: 82.3% of M/WBE contractors locked in subcontractor status, with only 24.89% sub-to-prime ratio (below 30% federal goal)
+
+* Agency Concentration: Top 5 agencies control 75% of contract value, with DDC alone accounting for 45.8% ($824M)
+
+```{r}
+contracts |>
+group_by(eth_gen) |>
+summarise(contract_value = sum(contract_value, na.rm = TRUE)) |>
+ggplot(aes(
+x = reorder(eth_gen, contract_value),
+y = contract_value/1e6
+)) +
+geom_col() +
+coord_flip() +
+labs(
+title = "Total Contract Value by EthGen",
+x = "Ethnicity / Gender Group",
+y = "Contract Value (Millions)"
+) +
+scale_y_continuous(labels = label_comma())
+```
+
+
+

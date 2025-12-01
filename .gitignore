@@ -19,6 +19,6 @@ data/**
 .Rhistory
 /.quarto/*
 **/gganim*
-
 /.quarto/
 **/*.quarto_ipynb
+Mwbe.qmd
