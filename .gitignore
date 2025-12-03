@@ -22,3 +22,5 @@ data/**
 /.quarto/
 **/*.quarto_ipynb
 Mwbe.qmd
+ce.data.0.ALICESSeries
+*.data.*
